@@ -1,0 +1,89 @@
+.body{
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imgLogin img{
+    width: 600px;
+    height: 500px;
+}
+
+.login i{
+    margin-left: -30px;
+    cursor: pointer;
+}
+
+.login{
+    width: 400px;
+}
+
+.login div input{
+    width: 100%;
+    padding: 6px 12px;
+    border-radius: 0.375em;
+    outline: none;
+    border: 1px solid #DEE2E6;
+}
+
+.login input{
+    box-shadow: none !important;
+}
+
+.login input:focus{
+    border: #5486BA 1px solid;
+}
+
+.btnLogin{
+    width: 100%;
+    background-color: #5486BA !important;
+    color: #ffffff !important;
+    transition: 1s !important;
+}
+
+.btnLogin:hover{
+    transition: 1s;
+    background-color: #649dda !important;
+}
+
+@media screen and (max-width: 990px) {
+    .imgLogin img{
+        width: 450px;
+        height: 350px !important;
+    }
+
+    .login{
+        width: 300px; 
+    }
+}
+
+@media screen and (max-width: 848px) {
+    .imgLogin img{
+        display: none;
+    }
+
+    .login h3, p, input{
+        width: 300px; 
+        text-align: center;
+    }
+
+    .body{
+        justify-content:center !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .imgLogin img{
+        display: none;
+    }
+
+    .login h3, p, input{
+        width: 250px; 
+        text-align: center;
+    }
+
+    .body{
+        justify-content:center !important;
+    }
+}

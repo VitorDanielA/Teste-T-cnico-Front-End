@@ -1,0 +1,82 @@
+.body{
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+.imgChat{
+    max-width: 750px;
+    margin: 90px 0px 0px 60px;
+    height: 550px;
+}
+
+.apresentacao{
+    width: 400px;
+    text-align: justify;
+}
+
+.apresentacao h2{
+    color: #5486BA;
+    font-weight: 900;
+    font-size: 40px;
+    padding-bottom: 50px;
+}
+
+.apresentacao strong{
+    font-size: 44px;
+}
+
+.textBemVindo{
+    font-size: 36px;
+    font-weight: 400;
+}
+
+.btnEntrar{
+    background-color: #FEB737 !important;
+    color: #ffffff !important;
+    width: 45%;
+    font-weight: 800 !important;
+    transition: 1s !important;
+}
+
+.btnInscrever{
+    background-color: #5486BA !important;
+    color: #ffffff !important;
+    width: 45%;
+    font-weight: 800 !important;
+    transition: 1s !important;
+}
+
+.btnEntrar:hover{
+    background-color: #f8c463 !important;
+    transition: 1s;
+}
+
+.btnInscrever:hover{
+    background-color: #649dda !important;
+    transition: 1s;
+}
+
+@media screen and (max-width: 845px){
+    .imgChat{
+        width: 450px;
+        height: 300px;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 466px){
+    .imgChat{
+        width: 360px;
+        height: 200px;
+        margin: 0px;
+    }
+    .apresentacao{
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 466px){
+    .imgChat{
+        width: 260px;
+    }
+}
