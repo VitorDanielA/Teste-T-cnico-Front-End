@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import EyeFill from './../assets/eye-fill.svg';
 import EyeSlash from './../assets/eye-slash.svg';
 import Alert from 'react-bootstrap/Alert';
+import * as io from 'socket.io-client';
 
 export default function TelaLogin(){
 
@@ -31,6 +32,9 @@ export default function TelaLogin(){
                     setLogin('');
                     setSenha('');
                     setUsuarioEncontrado(true);
+                    
+                    const socket = io.connect('http://localhost:3001')
+                    socket.emit('set_username', login)
                     window.location.href = '/telaChat'
                     return;
                 } 

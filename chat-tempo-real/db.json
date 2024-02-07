@@ -47,6 +47,24 @@
       "login": "Barney",
       "senha": "1234abcd",
       "email": "barney@gmail.com"
+    },
+    {
+      "id": "42f1",
+      "login": "Matheus",
+      "senha": "matheus123",
+      "email": "matheus@gmail.com"
+    },
+    {
+      "id": "b6b0",
+      "login": "Savinho",
+      "senha": "savin1",
+      "email": "savinho123@gmail.com"
+    },
+    {
+      "id": "07c6",
+      "login": "asdasdasd",
+      "senha": "12345a",
+      "email": "dasdas@gmail.com"
     }
   ]
 }
