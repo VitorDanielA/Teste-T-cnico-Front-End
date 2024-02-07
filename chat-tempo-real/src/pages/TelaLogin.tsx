@@ -4,13 +4,55 @@ import styles from './../css/TelaLogin.module.css';
 import { Link } from 'react-router-dom';
 import EyeFill from './../assets/eye-fill.svg';
 import EyeSlash from './../assets/eye-slash.svg';
+import Alert from 'react-bootstrap/Alert';
 
 export default function TelaLogin(){
 
     const [mostrarSenha, setMostrarSenha] = useState(false);
+    const [mostrarAlerta, setMostrarAlerta] = useState(false);
+    const [usuarioEncontrado, setUsuarioEncontrado] = useState(false);
+    const [login, setLogin] = useState('');
+    const [senha, setSenha] = useState('');
 
     const toggleMostrarSenha = () => {
         setMostrarSenha(!mostrarSenha);
+    }
+
+    function fazerLogin(){
+        fetch("http://localhost:5000/usuarios", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(resp => resp.json())
+        .then(data => {
+            for(let i = 0; i < data.length ; i ++){
+                if(data[i].login === login && data[i].senha === senha){
+                    setLogin('');
+                    setSenha('');
+                    setUsuarioEncontrado(true);
+                    window.location.href = '/telaChat'
+                    return;
+                } 
+            }
+
+            if(!usuarioEncontrado){
+                setMostrarAlerta(true);
+            }
+        }).catch(err => {console.log(err);})
+    }
+
+    const alertaErro = () => {
+        if (mostrarAlerta) {
+            return (
+              <Alert variant="danger" className='my-3' onClose={() => setMostrarAlerta(false)} dismissible>
+                <Alert.Heading>Houve um erro ao entrar</Alert.Heading>
+                <label>
+                  Verifique as informações inseridas, pois não foi encontrado um usuário com esse login e senha.
+                </label>
+              </Alert>
+            );
+        }
     }
     
     return(
@@ -26,18 +68,23 @@ export default function TelaLogin(){
                         type="text" 
                         className="form-control my-3" 
                         placeholder='Nome de Usuário'
+                        value={login}
+                        onChange={(e) => setLogin(e.target.value)}
                     />
                     <div className="mb-3">
                         <input 
                             type={mostrarSenha ? 'text' : 'password'} 
                             placeholder='Sua Senha'
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
                         />
                         <i onClick={toggleMostrarSenha}>
                             {mostrarSenha ? <img src={EyeFill} alt="ocultar senha" /> : <img src={EyeSlash} alt="mostrar senha" />}
                         </i>
                     </div>   
                 </div>
-                <button className={`${styles.btnLogin} btn mt-3`}>Entrar</button>
+                <button className={`${styles.btnLogin} btn mt-3`} onClick={fazerLogin}>Entrar</button>
+                {alertaErro()}
                 <p className='text-center mt-4'>Ainda não tem uma conta?<Link to={'/criarConta'}> Crie aqui</Link></p>
             </div>
         </div>
