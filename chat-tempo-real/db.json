@@ -1,3 +1,52 @@
 {
-    "usuarios": []
+  "usuarios": [
+    {
+      "id": "6d48",
+      "login": "Madson",
+      "senha": "12345aopskdas",
+      "email": "madson@gmail.com"
+    },
+    {
+      "id": "278b",
+      "login": "Joao",
+      "senha": "asdasd",
+      "email": "joao@gmail.com"
+    },
+    {
+      "id": "8812",
+      "login": "Rauls",
+      "senha": "123456a",
+      "email": "raul@gmail.com"
+    },
+    {
+      "id": "1099",
+      "login": "Madness",
+      "senha": "mama123",
+      "email": "madness@gmail.com"
+    },
+    {
+      "id": "03d7",
+      "login": "Madness",
+      "senha": "mama123",
+      "email": "madness@gmail.com"
+    },
+    {
+      "id": "f29c",
+      "login": "Arthur",
+      "senha": "1234abcd",
+      "email": "arthur@gmail.com"
+    },
+    {
+      "id": "42cf",
+      "login": "Leonam",
+      "senha": "bombado123",
+      "email": "leo@gmail.com"
+    },
+    {
+      "id": "8337",
+      "login": "Barney",
+      "senha": "1234abcd",
+      "email": "barney@gmail.com"
+    }
+  ]
 }
