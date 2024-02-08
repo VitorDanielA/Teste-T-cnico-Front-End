@@ -63,7 +63,7 @@
         display: none;
     }
 
-    .login h3, p, input{
+    .login h3, .p, input{
         width: 300px; 
         text-align: center;
     }
@@ -78,7 +78,7 @@
         display: none;
     }
 
-    .login h3, p, input{
+    .login h3, .p, input{
         width: 250px; 
         text-align: center;
     }

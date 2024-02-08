@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom';
 import EyeFill from './../assets/eye-fill.svg';
 import EyeSlash from './../assets/eye-slash.svg';
 import Alert from 'react-bootstrap/Alert';
-import * as io from 'socket.io-client';
 
-export default function TelaLogin(){
+interface TelaLoginProps {
+    setUser?: (usuario: string) => void;
+}
+
+export default function TelaLogin({setUser}: TelaLoginProps){
 
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [mostrarAlerta, setMostrarAlerta] = useState(false);
@@ -31,11 +34,10 @@ export default function TelaLogin(){
                 if(data[i].login === login && data[i].senha === senha){
                     setLogin('');
                     setSenha('');
+                    if(setUser){
+                        setUser(login)
+                    }
                     setUsuarioEncontrado(true);
-                    
-                    const socket = io.connect('http://localhost:3001')
-                    socket.emit('set_username', login)
-                    window.location.href = '/telaChat'
                     return;
                 } 
             }
@@ -66,7 +68,7 @@ export default function TelaLogin(){
             </div>
             <div className={`${styles.login} mt-5 p-2`}>
                 <h3>Bem vindo de volta ao WebChat!</h3>
-                <p className='pb-3'>Faça o login na sua conta</p>
+                <p className={`${styles.p} pb-3`}>Faça o login na sua conta</p>
                 <div className='mb-3'>
                     <input 
                         type="text" 

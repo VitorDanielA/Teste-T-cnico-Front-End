@@ -63,7 +63,7 @@
         display: none;
     }
 
-    .form h3, p, input{
+    .form h3, .p, input{
         width: 300px; 
         text-align: center;
     }

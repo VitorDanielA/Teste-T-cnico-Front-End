@@ -136,7 +136,7 @@ export default function TelaCriacaoUsuario(){
             </div>
             <div className={`${styles.form} mt-5 p-2`}>
                 <h3>Bem vindo ao WebChat</h3>
-                <p className='pb-3'>Crie sua conta para se juntar a nós</p>
+                <p className={`${styles.p} pb-3`}>Crie sua conta para se juntar a nós</p>
                 <input 
                     type="text" 
                     className="form-control" 
@@ -181,7 +181,7 @@ export default function TelaCriacaoUsuario(){
                 <button className={`${styles.btnInscrever} btn mt-3`} onClick={() => { criarUsuario(); setUsuario(new Usuario()); }}>Inscrever</button>
                 {alertaErro()}
                 {alertaSucesso()}
-                <p className='text-center mt-4'>Você já têm uma conta?<Link to={'/login'}> Entrar</Link></p>
+                <p className='text-center mt-4'>Você já têm uma conta?<Link to={'/trocarTelas'}> Entrar</Link></p>
             </div>
         </div>
     )

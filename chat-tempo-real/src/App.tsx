@@ -3,6 +3,7 @@ import TelaInicial from './pages/TelaInicial';
 import TelaCriacaoUsuario from './pages/TelaCriacaoUsuario';
 import TelaLogin from './pages/TelaLogin';
 import TelaChat from './pages/TelaChat';
+import TrocarTelas from './pages/TrocarTelas';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path='/criarConta' element = {<TelaCriacaoUsuario/>}/>
         <Route path='/login' element = {<TelaLogin/>}/>
         <Route path='/telaChat' element = {<TelaChat/>}/>
+        <Route path='/trocarTelas' element = {<TrocarTelas/>}/>
       </Routes>
     </Router>
   )

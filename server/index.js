@@ -2,7 +2,7 @@ const app = require('express')();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server, {
     cors: {
-        origin: 'http://localhost:5173',
+        origin: '*',
         METHODS: ['GET', 'POST'],
     }});
 
@@ -16,8 +16,20 @@ io.on('connection', socket => {
         console.log(socket.data.login);
     })
 
+    socket.on("send_message", (data) => {
+        socket.broadcast.emit("receive_message", data);
+    });
+
     socket.on('disconnect', reason => {
         console.log('Usuário desconectado', socket.id)
+    })
+
+    socket.on('message', text => {
+        io.emit('receive_message', {
+            text,
+            authorId: socket.id,
+            author: socket.data.login
+        })
     })
 
 })

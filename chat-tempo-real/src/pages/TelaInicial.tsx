@@ -11,7 +11,7 @@ export default function TelaInicial(){
                 <strong>WebChat</strong>
                 <p className='mt-5'>Bem-vindo ao Web Chat! Conecte-se instantaneamente com pessoas de todo o mundo e inicie conversas emocionantes em tempo real. Nossa plataforma intuitiva e amigável oferece uma experiência de chat online sem complicações.</p>
                 <div className='d-flex justify-content-between'>
-                    <Link to={'/login'} className={`${styles.btnEntrar} btn`}>Entrar</Link>
+                    <Link to={'/trocarTelas'} className={`${styles.btnEntrar} btn`}>Entrar</Link>
                     <Link to={'/criarConta'} className={`${styles.btnInscrever} btn`}>Inscrever</Link>
                 </div>
             </div>
