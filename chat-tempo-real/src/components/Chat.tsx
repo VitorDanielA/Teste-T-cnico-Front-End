@@ -1,16 +1,46 @@
 import { useEffect, useState } from 'react';
-import Person from './../assets/person.svg';
+import Person from './../assets/door-closed.svg';
 import styles from './../css/Chat.module.css';
+import { socket } from './../socket';
 
-export default function Chat(){
+interface userProps{
+    user:string;
+    salvarSala(salaChat: string): void;
+    limparChat():void;
+    atualizarChats: Salas[];
+}
 
-    interface User {
-        login: string;
-        email: string;
-        senha: string;
-    }
+interface User {
+    login: string;
+    email: string;
+    senha: string;
+    id: string;
+}
 
-    const [users, setUsers] = useState<User[]>([])
+interface Salas{
+    id: string;
+    nome: string;
+    descricao: string;
+}
+
+export default function Chat({user, salvarSala, limparChat, atualizarChats}:userProps){
+
+    const [, setUsers] = useState<User[]>([])
+    const [salas, setSalas] = useState<Salas[]>([]);
+    const [salaSelecionada, setSalaSelecionada] = useState<string | null>(null);
+
+    useEffect(() => {
+        if (atualizarChats.length > 0) {
+            const novasSalas = atualizarChats.map((sala) => ({
+                id: sala.id,
+                nome: sala.nome,
+                descricao: sala.descricao
+            }));
+
+            setSalas(novasSalas);
+        }
+    }, [atualizarChats, setSalas]);
+
 
     useEffect(() => {
         const fazerLogin = async () => {
@@ -27,22 +57,42 @@ export default function Chat(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const logins = users.map(user => user.login);
+    useEffect(() => {
+        const buscarSalas = async () => {
+            try{
+                const response =  await fetch("http://localhost:5000/salas")
+                const data = await response.json();
+                setSalas(data)
+            } catch(error){
+                console.log('Erro ao buscar dados')
+            }
+        }
+        buscarSalas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const selecionarSala = (login: string | undefined, sala: string) => {
+        setSalaSelecionada(sala);
+        socket.emit("select_room", {
+            login,
+            sala,
+        })
+    }
 
     const chats = () => {
         return(
             <div className={styles.scroll}>
-                {logins.map(login => (
+                {salas.map(sala => (
                     <>
-                        <div className={`${styles.container_chat} d-flex my-4`}>
+                        <div key={sala.id} className={`${styles.container_chat} d-flex my-4 ${salaSelecionada === sala.nome ? styles.selected : ''}`} onClick={() => {selecionarSala(user, sala.nome); salvarSala(sala.nome); limparChat()}}>
                             <img 
                                 src={Person} 
                                 alt='icone'
                                 className={styles.icone} 
                             />
                             <div>
-                                <strong className={styles.users_name}>{login}</strong>
-                                <p className={styles.desc_user}>Olá, eu sou {login}</p>
+                                <strong className={styles.users_name}>{sala.nome}</strong>
+                                <p className={styles.desc_user}>{sala.descricao}</p>
                             </div> 
                         </div>
                     </>

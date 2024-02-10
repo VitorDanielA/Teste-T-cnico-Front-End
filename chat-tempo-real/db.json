@@ -65,7 +65,49 @@
       "login": "Raulzito",
       "senha": "qwert1",
       "email": "raulzin@gmail.com"
+    },
+    {
+      "id": "4198",
+      "login": "raulzin",
+      "senha": "rdr2goty",
+      "email": "raulzin@gmail.com"
     }
   ],
-  "mensagens": []
+  "salas": [
+    {
+      "id": "1",
+      "nome": "React",
+      "descricao": "Conversa sobre React"
+    },
+    {
+      "id": "2",
+      "nome": "Typescript",
+      "descricao": "Conversa sobre TS"
+    },
+    {
+      "id": "3",
+      "nome": "CSS",
+      "descricao": "Conversa sobre CSS"
+    },
+    {
+      "id": "e726",
+      "nome": "HTML",
+      "descricao": "Conversa sobre HTML"
+    },
+    {
+      "id": "063d",
+      "nome": "Java",
+      "descricao": "Conversa sobre Java"
+    },
+    {
+      "id": "b7ab",
+      "nome": "VueJS",
+      "descricao": "Conversa sobre Vue"
+    },
+    {
+      "id": "708b",
+      "nome": "C",
+      "descricao": "Conversa sobre C"
+    }
+  ]
 }

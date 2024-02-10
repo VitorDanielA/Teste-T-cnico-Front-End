@@ -9,7 +9,7 @@ export default function TrocarTelas(){
     return(
         <div>
             {
-                user !== '' ? <TelaChat/> : <TelaLogin setUser = {setUser} />
+                user !== '' ? <TelaChat user = {user}/> : <TelaLogin setUser = {setUser} />
             }
         </div>
     )

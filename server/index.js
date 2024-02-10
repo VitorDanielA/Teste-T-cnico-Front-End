@@ -8,28 +8,76 @@ const io = require('socket.io')(server, {
 
 const PORT = 3001
 
+var users = [];
+
+async function fazerLogin() {
+    try {
+        const response = await fetch("http://localhost:5000/usuarios");
+        const data = await response.json();
+        users = data.map(user => ({ ...user, socketId: null })); 
+    } catch (error) {
+        console.log('Erro ao buscar dados:', error);
+    }
+}
+
+fazerLogin();
+
+/**
+ * @typedef {Object} RoomUser
+ * @property {string} socket_id - O ID do socket do usuário.
+ * @property {string} username - O nome de usuário do usuário.
+ * @property {string} room - A sala à qual o usuário está conectado.
+ */
+
+/** @type {RoomUser[]} */
+const user = [{
+    
+}];
+
+/**
+ * @typedef {Object} Message
+ * @property {string} salaMsg - O ID do socket do usuário.
+ * @property {string} username - O nome de usuário do usuário.
+ * @property {string} mensagem - A sala à qual o usuário está conectado.
+ * @property {Date} data - A sala à qual o usuário está conectado.
+ */
+
+
+const messagesChat = []
+
 io.on('connection', socket => {
+
     console.log("Usuário connectado", socket.id);
 
-    socket.on('set_username', login => {
-        socket.data.login = login;
-        console.log(socket.data.login);
+    socket.on("select_room", (data) =>{
+        console.log(data);
+
+        socket.join(data.sala);
+
+        const userInRoom = user.find((usuario) => usuario.username === data.login && usuario.room === data.sala)
+
+        if(userInRoom){
+            userInRoom.socket_id = socket.id;
+        } else{
+            user.push({
+                room: data.sala,
+                username: data.login,
+                socket_id: socket.id
+            })
+        }
     })
 
-    socket.on("send_message", (data) => {
-        socket.broadcast.emit("receive_message", data);
-    });
-
-    socket.on('disconnect', reason => {
-        console.log('Usuário desconectado', socket.id)
-    })
-
-    socket.on('message', text => {
-        io.emit('receive_message', {
-            text,
-            authorId: socket.id,
-            author: socket.data.login
-        })
+    socket.on("message", (message, sala, user) => {
+        /** @type {Message[]} */
+        var messages = {
+            salaMsg: sala,
+            username: user,
+            mensagem: message,
+            data: new Date(),
+        };
+        
+        messagesChat.push(messages);
+        io.to(messages.salaMsg).emit("message", messages)
     })
 
 })

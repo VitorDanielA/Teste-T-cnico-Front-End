@@ -2,6 +2,13 @@
     width: 179px;
     height: 50px;
     cursor: pointer;
+    transition: 1s;
+}
+
+.container_chat.selected{
+    background-color: #5486BA;
+    color: #ffffff;
+    transition: 1s;
 }
 
 .icone{
@@ -21,7 +28,7 @@
 }
 
 .scroll {
-    max-height: 85vh;
+    max-height: 80vh;
     overflow-y: auto;
 }
 
