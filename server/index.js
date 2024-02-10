@@ -8,20 +8,6 @@ const io = require('socket.io')(server, {
 
 const PORT = 3001
 
-var users = [];
-
-async function fazerLogin() {
-    try {
-        const response = await fetch("http://localhost:5000/usuarios");
-        const data = await response.json();
-        users = data.map(user => ({ ...user, socketId: null })); 
-    } catch (error) {
-        console.log('Erro ao buscar dados:', error);
-    }
-}
-
-fazerLogin();
-
 /**
  * @typedef {Object} RoomUser
  * @property {string} socket_id - O ID do socket do usuário.
@@ -49,7 +35,8 @@ io.on('connection', socket => {
 
     console.log("Usuário connectado", socket.id);
 
-    socket.on("select_room", (data) =>{
+    socket.on("select_room", (data, callback) =>{
+
         console.log(data);
 
         socket.join(data.sala);
@@ -65,6 +52,10 @@ io.on('connection', socket => {
                 socket_id: socket.id
             })
         }
+
+        const mensagensDaSala = recuperarMensagens(data.sala);
+        console.log(data.sala);
+        callback(mensagensDaSala);
     })
 
     socket.on("message", (message, sala, user) => {
@@ -81,5 +72,10 @@ io.on('connection', socket => {
     })
 
 })
+
+function recuperarMensagens(sala){
+    const mensagensSala = messagesChat.filter(mensagem => mensagem.salaMsg === sala);
+    return mensagensSala;
+}
 
 server.listen(PORT, () => console.log("Server running...."))

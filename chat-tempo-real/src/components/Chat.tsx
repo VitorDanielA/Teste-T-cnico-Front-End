@@ -8,6 +8,7 @@ interface userProps{
     salvarSala(salaChat: string): void;
     limparChat():void;
     atualizarChats: Salas[];
+    filtroSala: string;
 }
 
 interface User {
@@ -23,7 +24,7 @@ interface Salas{
     descricao: string;
 }
 
-export default function Chat({user, salvarSala, limparChat, atualizarChats}:userProps){
+export default function Chat({user, salvarSala, limparChat, atualizarChats, filtroSala}:userProps){
 
     const [, setUsers] = useState<User[]>([])
     const [salas, setSalas] = useState<Salas[]>([]);
@@ -76,13 +77,18 @@ export default function Chat({user, salvarSala, limparChat, atualizarChats}:user
         socket.emit("select_room", {
             login,
             sala,
+        }, (messages: unknown) => {
+            console.log(messages);
         })
     }
+
+    const salasFiltradas = salas.filter(sala => sala.nome.toLowerCase().includes(filtroSala.toLowerCase()));
+
 
     const chats = () => {
         return(
             <div className={styles.scroll}>
-                {salas.map(sala => (
+                {salasFiltradas.map(sala => (
                     <>
                         <div key={sala.id} className={`${styles.container_chat} d-flex my-4 ${salaSelecionada === sala.nome ? styles.selected : ''}`} onClick={() => {selecionarSala(user, sala.nome); salvarSala(sala.nome); limparChat()}}>
                             <img 

@@ -96,6 +96,9 @@ export default function TelaCriacaoUsuario(){
                 setVerificarSenha('');
                 setMostrarAlertaSucesso(true);
                 setMostrarAlerta(false);
+                setTimeout(() => {
+                    window.location.href = '/trocarTelas'
+                }, 1500)
             })
             .catch(err => console.log(err))
             setMostrarAlertaSucesso(true);

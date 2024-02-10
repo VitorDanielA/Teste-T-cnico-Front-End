@@ -7,6 +7,7 @@ import {
 } from 'cdbreact';
   
 import { BsPerson } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -21,9 +22,11 @@ const Sidebar = () => {
         <CDBSidebarContent className='container'>
           <CDBSidebarMenu>
             <CDBSidebarMenuItem icon="comment-alt">Conversas</CDBSidebarMenuItem>
-            <CDBSidebarMenuItem icon="sign-out-alt" iconType="solid">
-              Sair
-            </CDBSidebarMenuItem>
+            <Link to = '/'>
+              <CDBSidebarMenuItem icon="sign-out-alt" iconType="solid">
+                Sair
+              </CDBSidebarMenuItem> 
+            </Link>
           </CDBSidebarMenu>
         </CDBSidebarContent>
       </CDBSidebar>

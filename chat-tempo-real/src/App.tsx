@@ -12,7 +12,7 @@ function App() {
         <Route path='/' element = {<TelaInicial/>}/>
         <Route path='/criarConta' element = {<TelaCriacaoUsuario/>}/>
         <Route path='/login' element = {<TelaLogin/>}/>
-        <Route path='/telaChat' element = {<TelaChat/>}/>
+        <Route path='/telaChat' element = {<TelaChat user={''}/>}/>
         <Route path='/trocarTelas' element = {<TrocarTelas/>}/>
       </Routes>
     </Router>

@@ -71,6 +71,30 @@
       "login": "raulzin",
       "senha": "rdr2goty",
       "email": "raulzin@gmail.com"
+    },
+    {
+      "id": "65dd",
+      "login": "Vitor",
+      "senha": "vitinho1",
+      "email": "vitor@gmail.com"
+    },
+    {
+      "id": "bc8c",
+      "login": "Vitinho",
+      "senha": "12345a",
+      "email": "asdasd@gmail.com"
+    },
+    {
+      "id": "94ba",
+      "login": "testando",
+      "senha": "sjd09asdu9as",
+      "email": "testeando@gmail.com"
+    },
+    {
+      "id": "4a55",
+      "login": "testettt",
+      "senha": "asdasd1",
+      "email": "tes@gmail.com"
     }
   ],
   "salas": [
@@ -108,6 +132,11 @@
       "id": "708b",
       "nome": "C",
       "descricao": "Conversa sobre C"
+    },
+    {
+      "id": "84e0",
+      "nome": "Cobol",
+      "descricao": "Sala de cobol"
     }
   ]
 }

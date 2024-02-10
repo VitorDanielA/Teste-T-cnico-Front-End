@@ -1,4 +1,4 @@
-import {useEffect, useState } from "react";
+import {Key, useEffect, useState } from "react";
 import {socket} from './../socket';
 import Sidebar from "../components/SideBar";
 import styles from './../css/TelaChat.module.css';
@@ -12,6 +12,7 @@ interface TelaLoginProps {
 }
 
 interface Mensagem {
+  id: Key | null | undefined;
   salaMsg: string;
   username: string;
   mensagem: string;
@@ -31,7 +32,9 @@ export default function TelaChat({user}: TelaLoginProps) {
   const [show, setShow] = useState(false);
   const [salaChat, setSalaChat] = useState(new SalaChat());
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
-  const [atualizarSalas, setAtualizarSalas] = useState([])
+  const [atualizarSalas, setAtualizarSalas] = useState([]);
+  const [filtroSala, setFiltroSala] = useState<string>("");
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -56,7 +59,6 @@ export default function TelaChat({user}: TelaLoginProps) {
 
   function mandarMensagem(){
     socket.emit("message", message, sala, user);
-
   }
 
   function salvarSala(salaChat:string){
@@ -109,11 +111,11 @@ export default function TelaChat({user}: TelaLoginProps) {
 
   const conversa = () => {
     return(
-      <div>
+      <div className={styles.conversa}>
         {messageReceived.map(messagem => (
-          <div>
+          <div key={messagem.id}>
             <label className="form-label">
-              <strong>{messagem.username}</strong> <span>{messagem.mensagem} - {formatarData(messagem.data)} </span>
+              <strong>{messagem.username}: </strong> <span>{messagem.mensagem} - {formatarData(messagem.data)} </span>
             </label>
           </div>
       ))}
@@ -197,9 +199,15 @@ export default function TelaChat({user}: TelaLoginProps) {
     <div className="d-flex">
       <Sidebar/>
       <div className={`${styles.chat_group} pt-4`}>
-        <input type="text" placeholder='Procure/começe nova sala' className={`${styles.inputSearch} form-control mb-3`}/>
+        <input 
+          type="text" 
+          placeholder='Procure/começe nova sala' 
+          className={`${styles.inputSearch} form-control mb-3`}
+          value={filtroSala}
+          onChange={(e) => setFiltroSala(e.target.value)}
+        />
         {modal()}
-        <Chat user = {user} salvarSala = {salvarSala} limparChat = {clearChat} atualizarChats = {atualizarSalas}/>
+        <Chat user = {user} salvarSala = {salvarSala} limparChat = {clearChat} atualizarChats = {atualizarSalas} filtroSala = {filtroSala}/>
       </div>
       <div className={styles.div_chat}>
         <div className={styles.sem_conversa}>
