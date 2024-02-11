@@ -1,100 +1,16 @@
 {
   "usuarios": [
     {
-      "id": "6d48",
-      "login": "Madson",
-      "senha": "12345aopskdas",
-      "email": "madson@gmail.com"
-    },
-    {
       "id": "278b",
       "login": "Joao",
       "senha": "asdasd",
       "email": "joao@gmail.com"
     },
     {
-      "id": "8812",
-      "login": "Rauls",
-      "senha": "123456a",
-      "email": "raul@gmail.com"
-    },
-    {
-      "id": "03d7",
-      "login": "Madness",
-      "senha": "mama123",
-      "email": "madness@gmail.com"
-    },
-    {
-      "id": "f29c",
-      "login": "Arthur",
-      "senha": "1234abcd",
-      "email": "arthur@gmail.com"
-    },
-    {
-      "id": "42cf",
-      "login": "Leonam",
-      "senha": "bombado123",
-      "email": "leo@gmail.com"
-    },
-    {
-      "id": "8337",
-      "login": "Barney",
-      "senha": "1234abcd",
-      "email": "barney@gmail.com"
-    },
-    {
-      "id": "42f1",
-      "login": "Matheus",
-      "senha": "matheus123",
-      "email": "matheus@gmail.com"
-    },
-    {
       "id": "b6b0",
       "login": "Savinho",
       "senha": "savin1",
       "email": "savinho123@gmail.com"
-    },
-    {
-      "id": "07c6",
-      "login": "asdasdasd",
-      "senha": "12345a",
-      "email": "dasdas@gmail.com"
-    },
-    {
-      "id": "a112",
-      "login": "Raulzito",
-      "senha": "qwert1",
-      "email": "raulzin@gmail.com"
-    },
-    {
-      "id": "4198",
-      "login": "raulzin",
-      "senha": "rdr2goty",
-      "email": "raulzin@gmail.com"
-    },
-    {
-      "id": "65dd",
-      "login": "Vitor",
-      "senha": "vitinho1",
-      "email": "vitor@gmail.com"
-    },
-    {
-      "id": "bc8c",
-      "login": "Vitinho",
-      "senha": "12345a",
-      "email": "asdasd@gmail.com"
-    },
-    {
-      "id": "94ba",
-      "login": "testando",
-      "senha": "sjd09asdu9as",
-      "email": "testeando@gmail.com"
-    },
-    {
-      "id": "4a55",
-      "login": "testettt",
-      "senha": "asdasd1",
-      "email": "tes@gmail.com"
     }
   ],
   "salas": [
@@ -112,31 +28,6 @@
       "id": "3",
       "nome": "CSS",
       "descricao": "Conversa sobre CSS"
-    },
-    {
-      "id": "e726",
-      "nome": "HTML",
-      "descricao": "Conversa sobre HTML"
-    },
-    {
-      "id": "063d",
-      "nome": "Java",
-      "descricao": "Conversa sobre Java"
-    },
-    {
-      "id": "b7ab",
-      "nome": "VueJS",
-      "descricao": "Conversa sobre Vue"
-    },
-    {
-      "id": "708b",
-      "nome": "C",
-      "descricao": "Conversa sobre C"
-    },
-    {
-      "id": "84e0",
-      "nome": "Cobol",
-      "descricao": "Sala de cobol"
     }
   ]
 }

@@ -9,6 +9,14 @@ interface userProps{
     limparChat():void;
     atualizarChats: Salas[];
     filtroSala: string;
+    salvarMensagens(messages: Mensagem[]): void;
+}
+
+interface Mensagem{
+    salaMsg:string;
+    username:string;
+    mensagem:string;
+    data:string;
 }
 
 interface User {
@@ -24,7 +32,7 @@ interface Salas{
     descricao: string;
 }
 
-export default function Chat({user, salvarSala, limparChat, atualizarChats, filtroSala}:userProps){
+export default function Chat({user, salvarSala, limparChat, atualizarChats, filtroSala, salvarMensagens}:userProps){
 
     const [, setUsers] = useState<User[]>([])
     const [salas, setSalas] = useState<Salas[]>([]);
@@ -77,8 +85,8 @@ export default function Chat({user, salvarSala, limparChat, atualizarChats, filt
         socket.emit("select_room", {
             login,
             sala,
-        }, (messages: unknown) => {
-            console.log(messages);
+        }, (messages: Mensagem[]) => {
+            salvarMensagens(messages);
         })
     }
 

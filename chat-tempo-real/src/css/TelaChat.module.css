@@ -15,7 +15,7 @@
     flex-direction: column; 
 }
 
-.sem_conversa{
+.div_conversa{
     flex-grow: 1; 
     display: flex;
     align-items: end;
@@ -40,4 +40,24 @@
 .btnCriarChat{
     background-color: #5486BA !important;
     border: none;
+}
+
+.container_mensagem{
+    background-color: #f0f0f0;
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.container_mensagem label{
+    font-weight: bold;
+    color: #333;
+}
+
+.container_mensagem label span{
+    font-style: italic;
+}
+
+.container_mensagem label .span_conversa{
+    color: #007bff;
 }

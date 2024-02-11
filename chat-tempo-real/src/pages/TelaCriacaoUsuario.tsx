@@ -90,8 +90,7 @@ export default function TelaCriacaoUsuario(){
             body: JSON.stringify(usuario),
         })
             .then((resp) => resp.json())
-            .then((data) => {
-                console.log(data)
+            .then(() => {
                 setUsuario(new Usuario());
                 setVerificarSenha('');
                 setMostrarAlertaSucesso(true);

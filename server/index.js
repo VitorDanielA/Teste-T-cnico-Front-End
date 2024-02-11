@@ -37,8 +37,6 @@ io.on('connection', socket => {
 
     socket.on("select_room", (data, callback) =>{
 
-        console.log(data);
-
         socket.join(data.sala);
 
         const userInRoom = user.find((usuario) => usuario.username === data.login && usuario.room === data.sala)
@@ -54,7 +52,6 @@ io.on('connection', socket => {
         }
 
         const mensagensDaSala = recuperarMensagens(data.sala);
-        console.log(data.sala);
         callback(mensagensDaSala);
     })
 

@@ -6,6 +6,7 @@ import Chat from "../components/Chat";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
+import {setItem } from "./TrocarTelas";
 
 interface TelaLoginProps {
   user: string;
@@ -17,6 +18,7 @@ interface Mensagem {
   username: string;
   mensagem: string;
   data: string;
+  
 }
 
 class SalaChat{
@@ -34,7 +36,6 @@ export default function TelaChat({user}: TelaLoginProps) {
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
   const [atualizarSalas, setAtualizarSalas] = useState([]);
   const [filtroSala, setFiltroSala] = useState<string>("");
-
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -89,8 +90,7 @@ export default function TelaChat({user}: TelaLoginProps) {
       },
       body: JSON.stringify(salaChat),
     }).then((resp) => resp.json())
-    .then((data) => {
-      console.log(data)
+    .then(() => {
       setMostrarAlerta(true);
       buscarSalas();
     })
@@ -98,6 +98,8 @@ export default function TelaChat({user}: TelaLoginProps) {
   }
 
   useEffect(() => {
+
+    setItem('usuario', user)
 
     socket.on("message", (messages) => {
       setMessageReceived(prevMessage => [...prevMessage, messages]);
@@ -107,17 +109,18 @@ export default function TelaChat({user}: TelaLoginProps) {
     return () => {
       socket.off("message");
     }; 
-}, [message]); 
+}, [message, user]); 
 
   const conversa = () => {
     return(
       <div className={styles.conversa}>
         {messageReceived.map(messagem => (
-          <div key={messagem.id}>
+          <div key={messagem.id} className={styles.container_mensagem}>
             <label className="form-label">
-              <strong>{messagem.username}: </strong> <span>{messagem.mensagem} - {formatarData(messagem.data)} </span>
+              <span className={styles.span_conversa}>{messagem.username}</span>: {messagem.mensagem} - <span>{formatarData(messagem.data)}</span>
             </label>
           </div>
+        
       ))}
       </div>
     )
@@ -140,7 +143,6 @@ export default function TelaChat({user}: TelaLoginProps) {
     try{
       const response = await fetch("http://localhost:5000/salas")
       const data = await response.json();
-      console.log(data);
       setAtualizarSalas(data);
     } catch(error){
       console.log('Erro ao buscar dados')
@@ -195,6 +197,11 @@ export default function TelaChat({user}: TelaLoginProps) {
     )
   }
 
+  const salvarMensagens = (messages: Mensagem[]) => {
+    setMessageReceived(messages);
+  }
+
+
   return (
     <div className="d-flex">
       <Sidebar/>
@@ -207,10 +214,10 @@ export default function TelaChat({user}: TelaLoginProps) {
           onChange={(e) => setFiltroSala(e.target.value)}
         />
         {modal()}
-        <Chat user = {user} salvarSala = {salvarSala} limparChat = {clearChat} atualizarChats = {atualizarSalas} filtroSala = {filtroSala}/>
+        <Chat user = {user} salvarSala = {salvarSala} limparChat = {clearChat} atualizarChats = {atualizarSalas} filtroSala = {filtroSala} salvarMensagens={salvarMensagens}/>
       </div>
       <div className={styles.div_chat}>
-        <div className={styles.sem_conversa}>
+        <div className={styles.div_conversa}>
           {conversa()}
         </div>
         <div className={styles.input_mensagem}>
