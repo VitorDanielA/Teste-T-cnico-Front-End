@@ -75,6 +75,7 @@ export default function TelaLogin({setUser}: TelaLoginProps){
                         className="form-control my-3" 
                         placeholder='Nome de Usuário'
                         value={login}
+                        maxLength={10}
                         onChange={(e) => setLogin(e.target.value)}
                     />
                     <div className="mb-3">

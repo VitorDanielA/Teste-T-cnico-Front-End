@@ -110,7 +110,7 @@ export default function TelaCriacaoUsuario(){
               <Alert variant="danger" className='my-3' onClose={() => setMostrarAlerta(false)} dismissible>
                 <Alert.Heading>Houve um erro no cadastro</Alert.Heading>
                 <label>
-                  Tente inserir as informações corretamente! (Login com mais de 4 caracteres, senha com números e letras além de iguais nos 2 campos, e email com formato válido).
+                  Tente inserir as informações corretamente! (Login com mais de 4 caracteres e até 10, senha com números e letras além de iguais nos 2 campos, e email com formato válido).
                 </label>
               </Alert>
             );
@@ -143,6 +143,7 @@ export default function TelaCriacaoUsuario(){
                     type="text" 
                     className="form-control" 
                     placeholder='Seu Nome de Usuário'
+                    maxLength={10}
                     value={usuario.login}
                     onChange={handleChangeLogin}
                 />
@@ -151,6 +152,7 @@ export default function TelaCriacaoUsuario(){
                     className="form-control my-4" 
                     placeholder='Seu Email'
                     value={usuario.email}
+                    maxLength={35}
                     onChange={handleChangeEmail}
                 />
 
