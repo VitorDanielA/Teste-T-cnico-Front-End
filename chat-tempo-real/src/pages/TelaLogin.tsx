@@ -66,7 +66,7 @@ export default function TelaLogin({setUser}: TelaLoginProps){
             <div className={styles.imgLogin}>
                 <img src={Conectar} alt="Criação de Conta" />
             </div>
-            <div className={`${styles.login} mt-5 p-2`}>
+            <div className={`${styles.container_login} mt-5 p-2`}>
                 <h3>Bem vindo de volta ao WebChat!</h3>
                 <p className={`${styles.p} pb-3`}>Faça o login na sua conta</p>
                 <div className='mb-3'>

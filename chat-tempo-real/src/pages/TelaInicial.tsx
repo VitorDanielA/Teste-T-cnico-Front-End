@@ -9,7 +9,7 @@ export default function TelaInicial(){
                 <h2 className='mb-5'>Web Chat</h2>
                 <p className={styles.textBemVindo}>Bem vindo ao</p>
                 <strong>WebChat</strong>
-                <p className='mt-5'>Bem-vindo ao Web Chat! Conecte-se instantaneamente com pessoas de todo o mundo e inicie conversas emocionantes em tempo real. Nossa plataforma intuitiva e amigável oferece uma experiência de chat online sem complicações.</p>
+                <p className='mt-5'>Bem-vindo ao Web Chat! Conecte-se instantaneamente com pessoas de todo o mundo e inicie conversas em tempo real. Nossa plataforma intuitiva e amigável oferece uma experiência de chat online sem complicações.</p>
                 <div className='d-flex justify-content-between'>
                     <Link to={'/trocarTelas'} className={`${styles.btnEntrar} btn`}>Entrar</Link>
                     <Link to={'/criarConta'} className={`${styles.btnInscrever} btn`}>Inscrever</Link>

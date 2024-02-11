@@ -89,12 +89,13 @@ export default function TelaChat({user}: TelaLoginProps) {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(salaChat),
-    }).then((resp) => resp.json())
-    .then(() => {
-      setMostrarAlerta(true);
-      buscarSalas();
     })
-    .catch(err => console.log(err))
+      .then((resp) => resp.json())
+      .then(() => {
+        setMostrarAlerta(true);
+        buscarSalas();  
+      })
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
@@ -120,9 +121,8 @@ export default function TelaChat({user}: TelaLoginProps) {
               <span className={styles.span_conversa}>{messagem.username}</span>: {messagem.mensagem} - <span>{formatarData(messagem.data)}</span>
             </label>
           </div>
-        
-      ))}
-      </div>
+       ))}
+     </div>
     )
   }
 
@@ -131,9 +131,7 @@ export default function TelaChat({user}: TelaLoginProps) {
       return (
         <Alert variant="primary" className='mx-3' onClose={() => setMostrarAlerta(false)} dismissible>
           <Alert.Heading>Parabéns!</Alert.Heading>
-          <label>
-            Sala criada com sucesso!
-          </label>
+          <label> Sala criada com sucesso! </label>
         </Alert>
       );
     }
@@ -205,7 +203,7 @@ export default function TelaChat({user}: TelaLoginProps) {
   return (
     <div className="d-flex">
       <Sidebar/>
-      <div className={`${styles.chat_group} pt-4`}>
+      <div className={`${styles.info_chat} pt-4`}>
         <input 
           type="text" 
           placeholder='Procure/começe nova sala' 
@@ -214,7 +212,14 @@ export default function TelaChat({user}: TelaLoginProps) {
           onChange={(e) => setFiltroSala(e.target.value)}
         />
         {modal()}
-        <Chat user = {user} salvarSala = {salvarSala} limparChat = {clearChat} atualizarChats = {atualizarSalas} filtroSala = {filtroSala} salvarMensagens={salvarMensagens}/>
+        <Chat 
+          user = {user} 
+          salvarSala = {salvarSala} 
+          limparChat = {clearChat} 
+          atualizarChats = {atualizarSalas} 
+          filtroSala = {filtroSala} 
+          salvarMensagens={salvarMensagens}
+        />
       </div>
       <div className={styles.div_chat}>
         <div className={styles.div_conversa}>

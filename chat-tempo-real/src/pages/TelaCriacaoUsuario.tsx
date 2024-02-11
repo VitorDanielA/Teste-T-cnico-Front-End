@@ -6,13 +6,13 @@ import EyeFill from './../assets/eye-fill.svg';
 import EyeSlash from './../assets/eye-slash.svg';
 import Alert from 'react-bootstrap/Alert';
 
-export default function TelaCriacaoUsuario(){
+class Usuario{
+    login:string = '';
+    senha:string = '';
+    email:string = '';
+}
 
-    class Usuario{
-        login:string = '';
-        senha:string = '';
-        email:string = '';
-    }
+export default function TelaCriacaoUsuario(){
 
     const [mostrarSenha, setMostrarSenha] = useState(false);
     const [mostrarSenhaVerificar, setMostrarSenhaVerificar] = useState(false);
@@ -165,7 +165,6 @@ export default function TelaCriacaoUsuario(){
                     <i onClick={toggleMostrarSenha}>
                         {mostrarSenha ? <img src={EyeFill} alt="ocultar senha" /> : <img src={EyeSlash} alt="mostrar senha" />}
                     </i>
-                        
                 </div>
                 
                 <div className='mt-4'>

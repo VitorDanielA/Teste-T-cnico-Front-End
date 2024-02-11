@@ -19,22 +19,21 @@ interface Mensagem{
     data:string;
 }
 
-interface User {
-    login: string;
-    email: string;
-    senha: string;
-    id: string;
-}
-
 interface Salas{
     id: string;
     nome: string;
     descricao: string;
 }
 
-export default function Chat({user, salvarSala, limparChat, atualizarChats, filtroSala, salvarMensagens}:userProps){
+export default function Chat({
+    user, 
+    salvarSala, 
+    limparChat, 
+    atualizarChats, 
+    filtroSala, 
+    salvarMensagens
+}:userProps){
 
-    const [, setUsers] = useState<User[]>([])
     const [salas, setSalas] = useState<Salas[]>([]);
     const [salaSelecionada, setSalaSelecionada] = useState<string | null>(null);
 
@@ -49,22 +48,6 @@ export default function Chat({user, salvarSala, limparChat, atualizarChats, filt
             setSalas(novasSalas);
         }
     }, [atualizarChats, setSalas]);
-
-
-    useEffect(() => {
-        const fazerLogin = async () => {
-            try{
-                const response =  await fetch("http://localhost:5000/usuarios")
-                const data = await response.json();
-                setUsers(data)
-            } catch(error){
-                console.log('Erro ao buscar dados')
-            }
-        }
-
-        fazerLogin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     useEffect(() => {
         const buscarSalas = async () => {
@@ -105,8 +88,8 @@ export default function Chat({user, salvarSala, limparChat, atualizarChats, filt
                                 className={styles.icone} 
                             />
                             <div>
-                                <strong className={styles.users_name}>{sala.nome}</strong>
-                                <p className={styles.desc_user}>{sala.descricao}</p>
+                                <strong className={styles.sala_nome}>{sala.nome}</strong>
+                                <p className={styles.desc_sala}>{sala.descricao}</p>
                             </div> 
                         </div>
                     </>

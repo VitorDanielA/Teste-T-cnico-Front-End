@@ -72,3 +72,18 @@
         justify-content:center !important;
     }
 }
+
+@media screen and (max-width: 300px) {
+    .imgContainer img{
+        display: none;
+    }
+
+    .form h3, .p, input{
+        width: 260px; 
+        text-align: center;
+    }
+
+    .body{
+        justify-content:center !important;
+    }
+}

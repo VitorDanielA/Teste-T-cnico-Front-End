@@ -17,12 +17,12 @@
     height: 45px;
 }
 
-.users_name{
+.sala_nome{
     font-size: 16px;
     padding: 0px 0px 0px 5px;
 }
 
-.desc_user{
+.desc_sala{
     margin-bottom: 0px !important;
     margin-left: 5px;
     font-size: 13px;
@@ -42,11 +42,11 @@
         width: 80px;
         padding: 0px !important;
     }
-    .desc_user, .icone{
+    .desc_sala, .icone{
         display: none;
     }
 
-    .users_name{
+    .sala_nome{
         padding: 0px;
     }
 }

@@ -33,7 +33,7 @@
 .btnEntrar{
     background-color: #FEB737 !important;
     color: #ffffff !important;
-    width: 45%;
+    width: 48%;
     font-weight: 800 !important;
     transition: 1s !important;
 }
@@ -41,7 +41,7 @@
 .btnInscrever{
     background-color: #5486BA !important;
     color: #ffffff !important;
-    width: 45%;
+    width: 48%;
     font-weight: 800 !important;
     transition: 1s !important;
 }
@@ -56,11 +56,11 @@
     transition: 1s;
 }
 
-@media screen and (max-width: 845px){
+@media screen and (max-width: 1115px){
     .imgChat{
         width: 450px;
         height: 300px;
-        margin-left: 0px;
+        margin-right: 120px;
     }
 }
 
@@ -68,15 +68,15 @@
     .imgChat{
         width: 360px;
         height: 200px;
-        margin: 0px;
+        margin-right: 60px;
     }
     .apresentacao{
         padding: 40px;
     }
 }
 
-@media screen and (max-width: 466px){
+@media screen and (max-width: 300px){
     .imgChat{
-        width: 260px;
+        display: none;
     }
 }
